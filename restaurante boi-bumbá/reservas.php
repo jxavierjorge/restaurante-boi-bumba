@@ -20,23 +20,10 @@
 		<hr>
 		<h2 id="title">Faça sua reserva</h2>
 		<form>
-			<table style="border-color: darkorange;border-style: solid;width: 45%;background-color: orange;border-radius: 25px;">
-				<tr>
-					<td style="text-align: right;">Nome: </td>
-					<td><input type="text" name="nome"></td>
-				</tr>
-				<tr>
-					<td style="text-align: right;">Telefone: </td>
-					<td><input type="text" name="tel"></td>
-				</tr>	
-				<tr>
-					<td style="text-align: right;">Nº de Pessoas: </td>
-					<td><input type="number" name="q_pessoas"></td>
-				</tr>
-				<tr>
-					<td colspan="2"><button style="border-style: none;border-radius: 80px;">Reservar</button></td>
-				</tr>
-			</table>
+			<tr>
+				<th>Nome:</th>
+				<th><input type="text" name="nome"></th>
+			</tr>
 		</form>
 		<hr>
 			<h2 id=title>Horários</h2>
@@ -55,7 +42,7 @@
 				</div>
 				<br>
 		</center>
-		<footer><a href="login.php">Página do colaborador</a></footer>
+		<a href="login.php">Pagina do colaborador</a>
 		</div>
 	</center>	
 	</body>
