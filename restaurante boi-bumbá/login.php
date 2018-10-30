@@ -19,40 +19,21 @@
 		</table>
 		<hr>
 		<h2 id="title">Página do Colaborador</h2>
-		<form>
+		<form action="validaLogin.php" method="post">
 			<table style="border-color: darkorange;border-style: solid;width: 45%;background-color: orange;border-radius: 25px;">
 				<tr>
-					<td style="text-align: right;">Login: </td>
+					<td style="text-align: right;"><label>Usuário:</label></td>
 					<td><input type="text" name="login"></td>
 				</tr>
 				<tr>
-					<td style="text-align: right;">Senha: </td>
+					<td style="text-align: right;"><label>Senha:</label></td>
 					<td><input type="password" name="senha"></td>
 				</tr>	
 				<tr>
-					<td colspan="2"><button style="border-style: none;border-radius: 80px;">Conectar</button></td>
+					<td colspan="2"><input type="submit" value="entrar" id="entrar" name="entrar"></td>
 				</tr>
 			</table>
 		</form>
-		<hr>
-			<h2 id=title>Horários</h2>
-		<marquee direction="left">	
-			<p>11:00 às 14:00 - De Segunda a Sábado - Telefone: (00) 9999-9999</p>
-		</marquee>
-		<hr>
-		<center>
-		<div class="mapouter">
-			<div class="gmap_canvas">
-				<iframe width="600" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=proje%C3%A7%C3%A3o%20campus%202&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-				</iframe>
-				<a href="https://www.crocothemes.net"></a>
-				</div>
-				<style>.mapouter{text-align:right;height:300px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:600px;}</style>
-				</div>
-				<br>
-		</center>
-		<footer><a href="login.php">Página do colaborador</a></footer>
-		</div>
-	</center>	
+		<br>
 	</body>
 </html>

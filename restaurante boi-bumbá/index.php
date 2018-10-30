@@ -38,7 +38,7 @@
 				</div>
 				<br>
 		</center>
-		<footer><a href="login.php">Página do colaborador</a></footer>
+		<a href="login.php">Pagina do colaborador</a>
 		</div>
 	</center>	
 	</body>
