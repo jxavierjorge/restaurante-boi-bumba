@@ -1,11 +1,19 @@
-<?php require 'login.php'; ?>
+<?php require "conecta.php" ?>
+<?php require_once "bancoReserva.php" ?> 
+
 <?php 
   $login = $_POST['login'];
-  $entrar = $_POST['entrar'];
-  $senha = ($_POST['senha']);
-  if ($login != "Admin" or $senha != "123456"){
-    echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='login.php';</script>";
-        }else if ($login == "Admin" and $senha == "123456"){
-          header("Location:index.php");
-        }
+  $senha = $_POST['senha'];
+  
+$loginUsuario = buscaUsuario($conexao, $login, $senha); 
+
+if ($loginUsuario == 0) //Em caso de não encontrar nenhum dado solicitado
+	{
+		header("Location:login.php?login=0"); //Volta para a tela de login
+	}
+	else 
+	{
+		header("Location:index.php?user=$login");
+	}
+	
 ?>
