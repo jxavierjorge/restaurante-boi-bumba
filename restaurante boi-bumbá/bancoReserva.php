@@ -3,6 +3,19 @@
 
 
 <?php
+
+	function buscaUsuario($conexao, $login, $senha){
+		
+		$loginUsuario = mysqli_real_escape_string($conexao, $login);
+		
+		$sql = "SELECT * FROM usuario WHERE login = '{$loginUsuario}' and senha = '{$senha}'";
+		
+		$consulta = mysqli_query($conexao, $sql);
+		
+		$resultado = mysqli_num_rows($consulta);
+		return $resultado;
+	
+	}
 	
 	function adicionaReserva($conexao, $reserva) {
 		
@@ -35,22 +48,22 @@
 			<table>
 				<form action="alteraReserva.php" method="POST">
 					<tr>
-						<td><input type=hidden value=<?php echo array['id'] ?> name=id> </td> <!-- ID para controle das reservas -->
+						<td><input type=hidden value=<?php echo $array['id'] ?> name=id> </td> <!-- ID para controle das reservas -->
 					</tr>
 					<tr>
-						<td>Nome: <input type=text value=<?php echo array['nome'] ?> name=nome> </td> <!-- Novo name para atualizar os dados -->
+						<td>Nome: <input type=text value=<?php echo $array['nome'] ?> name=nome> </td> <!-- Novo name para atualizar os dados -->
 					</tr>
 					<tr>
-						<td>Telefone: <input type=number_format value=<?php echo array['telefone'] ?> name=telefone > </td>
+						<td>Telefone: <input type=number_format value=<?php echo $array['telefone'] ?> name=telefone > </td>
 					</tr>
 					<tr>
-						<td>E-mail: <input type=text value=<?php echo array['email'] ?> name=email > </td>
+						<td>E-mail: <input type=text value=<?php echo $array['email'] ?> name=email > </td>
 					</tr>
 					<tr>
-						<td>Data: <input type=date value=<?php echo array['data'] ?> name=data > </td>
+						<td>Data: <input type=date value=<?php echo $array['data'] ?> name=data > </td>
 					</tr>
 					<tr>
-						<td>Pessoas: <input type=number_format value=<?php echo array['pessoas']?> name=pessoas ></td>
+						<td>Pessoas: <input type=number_format value=<?php echo $array['pessoas']?> name=pessoas ></td>
 					</tr>
 					<tr>
 						<td><input type=submit value="alterar"></td>
@@ -58,7 +71,7 @@
 				</form>
 				<form action="cancelaReserva.php" method="POST">
 					<tr>
-						<td><input type=hidden value=<?php echo array['id'] ?> name=id> </td>
+						<td><input type=hidden value=<?php echo $array['id'] ?> name=id> </td>
 						<button> Remover </button> <!-- Ação do form -->
 					</tr>
 				</form>

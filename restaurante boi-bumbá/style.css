@@ -6,7 +6,7 @@ table{
 	text-align: center;
 }
 div{
-	border-radius:20px;	
+	border-radius:25px;	
 	width:625px;			
 	background-color:#ffbf7e;
 }
@@ -48,4 +48,10 @@ img {
 	border-style:solid;
 	border-width: thick;
 	border-color: dark red;
+}
+button:hover{
+	
+	    background-color:Lightgray;
+	    cursor: pointer;
+
 }

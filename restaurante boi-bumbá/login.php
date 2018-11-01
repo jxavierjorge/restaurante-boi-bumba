@@ -9,7 +9,10 @@
 	<body>
 	<center>
 		<div id="borda">
-		<h1>Restaurante Boi-Bumbá</h1>
+			<h1>
+				<img src="imagens/favicon.png" style="width:42px;height:42px;border:0;position:relative;top:10px;left:6px"/>
+				Restaurante Boi-Bumbá
+			</h1>
 		<table>
 			<tr>
 				<td><a href="index.php"><button>Sobre</button></a></td>
@@ -28,6 +31,12 @@
 				<tr>
 					<td style="text-align: right;"><label>Senha:</label></td>
 					<td><input type="password" name="senha"></td>
+					<?php 
+						if(isset ($_GET['login']) && ($_GET['login'] == 0)){
+							
+							echo "Usuário ou senha errados!";
+						}
+					?>
 				</tr>	
 				<tr>
 					<td colspan="2"><input type="submit" value="entrar" id="entrar" name="entrar"></td>
