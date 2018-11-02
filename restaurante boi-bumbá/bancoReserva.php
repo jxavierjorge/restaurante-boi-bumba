@@ -83,4 +83,31 @@
 		} //fim do while  ?> <a href="login.php">Adicionar Reservas</a><?php //Dentro do método relacionado
 	} //fim do método
 
+	localizaReserva($conexao, $a, $nome){
+		if ($a == "buscar"){
+			
+			$palavra = trim($nome);
+			
+			$sql = "SELECT * FROM reserva WHERE nome LIKE %".$palavra."% ORDER BY nome";
+			
+			$consulta = mysqli_query($conexao, $sql);
+			$numRegistros = mysqli_num_rows($consulta);
+			
+			if ($numRegistro != 0){
+				while($exibe = mysqli_fetch_object($consulta)){		
+					echo 'ID: ' . $exibe->id;
+					echo '<br/>Nome: ' . $exibe->nome;
+					echo '<br/>Telefone: ' . $exibe->telefone;
+					echo '<br/>Email: ' . $exibe->email;
+					echo '<br/>Data: ' . $exibe->data;
+					echo '<br/>Pessoas: ' . $exibe->pessoas;					
+				}		
+			}
+		}
+		else {
+			
+			echo "Nenhuma reserva com o nome: ".$a." foi encotrado";
+			
+		}
+	}
 ?>	
