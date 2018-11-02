@@ -23,10 +23,32 @@
 		<hr>
 		<h2 id="title">Faça sua reserva</h2>
 		<form>
+			<table>
 			<tr>
-				<th>Nome:</th>
-				<th><input type="text" name="nome"></th>
+				<td>Nome:</td>
+				<td><input type="text" name="nome"></td>
 			</tr>
+			<tr>
+				<td>Telefone:</th>
+				<td><input type="number" name="telefone"></th>
+			</tr>
+			<tr>
+				<td>E-mail:</th>
+				<td><input type="text" name="email"></th>
+			</tr>
+			<tr>
+				<td>Data:</th>
+				<td><input type="date" name="data"></th>
+			</tr>
+			<tr>
+				<td>Qtd. Pessoas:</th>
+				<td><input type="number" name="pessoas"></th>
+			</tr>
+			<tr>
+				<td><button type="submit">Enviar</button></td>
+				<td><button type="reset">Limpar</button></td>
+			</tr>
+			</table>
 		</form>
 		<hr>
 			<h2 id=title>Horários</h2>
