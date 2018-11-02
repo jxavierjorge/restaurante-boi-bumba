@@ -26,4 +26,13 @@
 	
 ?>
 
-<a href = "listaReserva.php">Voltar</a>
+<?php
+	echo '<center>';
+	echo '<br>';
+	echo '<link rel="stylesheet" type="text/css" href="style.css">';
+	echo '<table border="2" id="resultados">';
+	echo '<tr>';
+	echo '<td colspan=2>'.'<a href = "listaReserva.php">'.'<button> Voltar </button>'.'</a>'.'</td>';
+	echo '</tr>';
+	echo '</table>';
+	echo '</center>';

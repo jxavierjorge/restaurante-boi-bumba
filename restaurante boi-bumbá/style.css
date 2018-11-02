@@ -51,7 +51,12 @@ img {
 }
 button:hover{
 	
-	    background-color:Lightgray;
-	    cursor: pointer;
+	background-color:Lightgray;
+	cursor: pointer;
 
+}
+#resultados{
+	background-color: #ffbf7e;
+	border-style: dotted;
+	width:5cm;
 }
