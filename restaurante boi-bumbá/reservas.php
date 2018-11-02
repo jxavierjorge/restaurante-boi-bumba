@@ -22,7 +22,7 @@
 		</table>
 		<hr>
 		<h2 id="title">Faça sua reserva</h2>
-		<form>
+		<form action="adicionaReserva.php" method="POST">
 			<table>
 			<tr>
 				<td>Nome:</td>
