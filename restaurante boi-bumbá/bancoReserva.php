@@ -83,7 +83,7 @@
 		} //fim do while  ?> <a href="login.php">Adicionar Reservas</a><?php //Dentro do método relacionado
 	} //fim do método
 
-	localizaReserva($conexao, $a, $nome){
+	function localizaReserva($conexao, $a, $nome){
 		if ($a == "buscar"){
 			
 			$palavra = trim($nome);
