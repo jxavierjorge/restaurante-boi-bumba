@@ -23,7 +23,7 @@
 		<hr>
 		<h2 id="title">Página do Colaborador</h2>
 		<form action="validaLogin.php" method="post">
-			<table style="border-color: darkorange;border-style: solid;width: 45%;background-color: orange;border-radius: 25px;">
+			<table style="border-color: darkorange;border-style: solid;width: 45%; padding: 5px; background-color: orange;border-radius: 25px;">
 				<tr>
 					<td style="text-align: right;"><label>Usuário:</label></td>
 					<td><input type="text" name="login"></td>
@@ -39,7 +39,7 @@
 					?>
 				</tr>	
 				<tr>
-					<td colspan="2"><input type="submit" value="entrar" id="entrar" name="entrar"></td>
+					<td colspan="2" style="position:relative;top:2px;left:-27px;"><input type="submit" value="entrar" id="entrar" name="entrar"></td>
 				</tr>
 			</table>
 		</form>
