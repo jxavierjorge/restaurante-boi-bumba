@@ -1,6 +1,6 @@
 <?php require_once("conecta.php") ?>
 <?php require_once("Reserva.php") ?>
-<?php require_once("bancoReseva.php") ?>
+<?php require_once("bancoReserva.php") ?>
 
 
 <!DOCTYPE html>
@@ -9,7 +9,6 @@
 <?php
 
 	$reserva= new Reserva ();
-	$reserva->id=$_POST['id'];
 	$reserva->nome=$_POST['nome'];
 	$reserva->telefone=$_POST['telefone'];
 	$reserva->email=$_POST['email'];
