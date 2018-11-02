@@ -3,7 +3,7 @@
 
 
 <?php
-
+	
 	function buscaUsuario($conexao, $login, $senha){
 		
 		$loginUsuario = mysqli_real_escape_string($conexao, $login);
@@ -15,6 +15,11 @@
 		$resultado = mysqli_num_rows($consulta);
 		return $resultado;
 	
+	}
+			
+	function formataData($reserva){	
+		$data = new DateTime($reserva->data); //Criando um objeto apartir da classe DateTime
+		echo 'Data: ' . $reserva->data = $data->format('d/m/y'); //exibe no formato string a referente data na mesma variável 	
 	}
 	
 	function adicionaReserva($conexao, $reserva) {
@@ -66,7 +71,7 @@
 						<td>Pessoas: <input type=number_format value=<?php echo $array['pessoas']?> name=pessoas ></td>
 					</tr>
 					<tr>
-						<td><input type=submit value="alterar"></td>
+						<td><input type=submit value="Alterar"></td>
 					<tr>
 				</form>
 				<form action="cancelaReserva.php" method="POST">
@@ -99,15 +104,19 @@
 					echo '<br/>Nome: ' . $exibe->nome;
 					echo '<br/>Telefone: ' . $exibe->telefone;
 					echo '<br/>Email: ' . $exibe->email;
-					echo '<br/>Data: ' . $exibe->data;
+					formataData($reserva);
 					echo '<br/>Pessoas: ' . $exibe->pessoas;					
 				}		
 			}
+			
+			
 		}
 		else {
 			
 			echo "Nenhuma reserva com o nome: ".$a." foi encotrado";
 			
 		}
+		
+		?><a href="listaReserva.php">Listagem de reservas</a> <?php
 	}
 ?>	
