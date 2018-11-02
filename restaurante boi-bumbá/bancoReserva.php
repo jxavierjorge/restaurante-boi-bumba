@@ -93,27 +93,30 @@
 			
 			$palavra = trim($nome);
 			
-			$sql = "SELECT * FROM reserva WHERE nome LIKE %".$palavra."% ORDER BY nome";
+			$sql = "SELECT * FROM reserva WHERE nome LIKE '%".$palavra."%' ORDER BY nome";
 			
 			$consulta = mysqli_query($conexao, $sql);
 			$numRegistros = mysqli_num_rows($consulta);
 			
-			if ($numRegistro != 0){
+			if ($numRegistros != 0){
 				while($exibe = mysqli_fetch_object($consulta)){		
 					echo 'ID: ' . $exibe->id;
 					echo '<br/>Nome: ' . $exibe->nome;
 					echo '<br/>Telefone: ' . $exibe->telefone;
-					echo '<br/>Email: ' . $exibe->email;
+					echo '<br/>Email: ' . $exibe->email . '<br/>';
+					$reserva = new Reserva(); //recriamos o objeto dentro do método para ser possível passar o valor para o formataData
+					$reserva->data = $exibe->data;
 					formataData($reserva);
-					echo '<br/>Pessoas: ' . $exibe->pessoas;					
+					echo '<br/>Pessoas: ' . $exibe->pessoas . '<br/><br/>';					
 				}		
 			}
 			
+			else {
 			
-		}
-		else {
+				echo "Nenhuma reserva com o nome ".$nome." foi encotrado<br/>";
 			
-			echo "Nenhuma reserva com o nome: ".$a." foi encotrado";
+			}
+			
 			
 		}
 		
