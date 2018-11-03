@@ -51,12 +51,29 @@ img {
 }
 button:hover{
 	
-	background-color:Lightgray;
+	background-color:lightgray;
 	cursor: pointer;
 
 }
 #resultados{
 	background-color: #ffbf7e;
 	border-style: dotted;
-	width:5cm;
+	width:8cm;
+}
+#pesquisa{
+	background-color: #ffbf7e;
+	width:25%;
+	border-style: dotted;
+	border-color: red;
+}
+legend{
+	font-size: 25px;
+	background-color: #db8400;
+	border-radius: 10px;
+	border-style: dotted;
+	border-color: red;
+}	
+#alerta{
+	font-size: 25px;
+	height: 1cm;
 }
