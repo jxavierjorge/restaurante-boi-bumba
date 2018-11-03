@@ -89,7 +89,7 @@
 	} //fim do método
 
 	function localizaReserva($conexao, $a, $nome){
-		if ($a == "buscar"){
+		if (($a == "buscar") && ($nome != null )){
 			
 			$palavra = trim($nome);
 			
