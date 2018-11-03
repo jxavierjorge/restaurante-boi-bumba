@@ -14,8 +14,6 @@
 			<br>
 			<br>
 			<button type="submit">Buscar</button>
-			<hr>
-			<p>Obs: se quiser conferir todas as reservas registradas, favor deixar o campo vazio</p>
 		</form>
 	</fieldset>
 	</center>
