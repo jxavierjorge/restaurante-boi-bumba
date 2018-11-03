@@ -30,7 +30,9 @@
 		echo '<td>E-mail:</td>' .'<td>'.$reserva->email.'</td>';
 		echo '</tr>';
 		echo '<tr>';
-		echo '<td>'.formataData($reserva).'</td>';
+		echo '<td colspan="2">';
+		formataData($reserva);
+		echo '</td>';
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Qtd. Pessoas:</td>' .'<td>'.$reserva->pessoas.'</td>';

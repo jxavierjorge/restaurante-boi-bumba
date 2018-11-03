@@ -99,27 +99,54 @@
 			$numRegistros = mysqli_num_rows($consulta);
 			
 			if ($numRegistros != 0){
-				while($exibe = mysqli_fetch_object($consulta)){		
-					echo 'ID: ' . $exibe->id;
-					echo '<br/>Nome: ' . $exibe->nome;
-					echo '<br/>Telefone: ' . $exibe->telefone;
-					echo '<br/>Email: ' . $exibe->email . '<br/>';
+				while($exibe = mysqli_fetch_object($consulta)){	
+					echo '<link rel="stylesheet" type="text/css" href="style.css">';
+					echo '<center>';
+					echo '<table id="resultados">';
+					echo '<tr>';	
+					echo '<td>ID:</td>'. '<td>'.$exibe->id.'</td>';
+					echo '</tr>';
+					echo '<tr>';
+					echo '<td>Nome:</td>' .'<td>'.$exibe->nome.'</td>';
+					echo '</tr>';
+					echo '<tr>';
+					echo '<td>Telefone:</td>' .'<td>'.$exibe->telefone.'</td>';
+					echo '</tr>';
+					echo '<tr>';
+					echo '<td>Email:</td>' .'<td>'.$exibe->email.'</td>';
+					echo '</tr>';
 					$reserva = new Reserva(); //recriamos o objeto dentro do método para ser possível passar o valor para o formataData
 					$reserva->data = $exibe->data;
+					echo '<tr>';
+					echo '<td colspan="2">';
 					formataData($reserva);
-					echo '<br/>Pessoas: ' . $exibe->pessoas . '<br/><br/>';					
+					echo '</td>';
+					echo '</tr>';
+					echo '<tr>';
+					echo '<td>Pessoas:</td>' .'<td>'.$exibe->pessoas .'</td>';	
+					echo '</tr>';
+					echo '</table>';
+					echo '<br>';				
 				}		
 			}
 			
 			else {
-			
-				echo "Nenhuma reserva com o nome ".$nome." foi encotrado<br/>";
+				echo '<link rel="stylesheet" type="text/css" href="style.css">';
+				echo '<center>';
+				echo '<div id="alerta">Nenhuma reserva com o nome '.$nome.' foi encontrado</div>';
 			
 			}
 			
 			
 		}
 		
-		?><a href="listaReserva.php">Listagem de reservas</a> <?php
+		?>
+		<br>	
+		<a href="listaReserva.php"><button>Lista completa de reservas</button></a>
+		<br><br>
+		<a href="localizaReserva.php"><button>Fazer outra pesquisa</button></a>	
+		<?php
+		echo '</center>';
 	}
+	echo '</center>';
 ?>	
