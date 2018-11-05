@@ -13,13 +13,6 @@
 				<img src="imagens/favicon.png" style="width:42px;height:42px;border:0;position:relative;top:10px;left:6px"/>
 				Restaurante Boi-Bumbá
 			</h1>
-		<table>
-			<tr>
-				<td><a href="index.php"><button>Sobre</button></a></td>
-				<td><a href="reservas.php"><button>Reservas</button></a></td>
-				<td><a href="cardapio.php"><button>Cardápio</button></a></td>
-			</tr>
-		</table>
 		<hr>
 		<h2 id="title">Página do Colaborador</h2>
 		<form action="validaLogin.php" method="post">
@@ -43,6 +36,8 @@
 				</tr>
 			</table>
 		</form>
-		<br>
+		<br/>
+		<a href="adicionaLogin.php">Cadastre-se aqui!</a>
+		<br/>
 	</body>
 </html>

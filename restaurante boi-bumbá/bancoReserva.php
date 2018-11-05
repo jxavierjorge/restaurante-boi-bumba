@@ -3,6 +3,34 @@
 
 
 <?php
+
+	function adicionaUsuario($conexao, $usuario){
+		
+		$sql = "INSERT INTO usuario(login, senha, perfil) VALUES ('{$usuario->login}', '{$usuario->senha}', '{$usuario->perfil}')";
+		
+		$resultado = mysqli_query($conexao, $sql);
+		return $resultado;
+		
+	}
+	
+	function verificaPerfil($usuario){		
+		if($usuario->perfil == 1){
+			$perfil = "Administrador";
+			return $perfil;
+		}
+		else{
+			$perfil = "Cliente";
+			return $perfil;
+		}	
+	}
+	
+	function buscaPerfil($conexao, $login){
+		$sql = "SELECT perfil FROM usuario WHERE login LIKE '%".$login."%'";
+		$resultado = mysqli_query($conexao, $sql); //o resultado do método é true or false
+		
+		$perfil= mysqli_fetch_assoc($resultado); //retorna o registro procurado
+		return $perfil['perfil'];
+	}
 	
 	function buscaUsuario($conexao, $login, $senha){
 		
@@ -22,38 +50,60 @@
 		echo 'Data: ' . $reserva->data = $data->format('d/m/y'); //exibe no formato string a referente data na mesma variável 	
 	}
 	
-	function adicionaReserva($conexao, $reserva) {
+	
+	function adicionaReserva($conexao, $reserva, $login) {
 		
-		$sql = "INSERT INTO reserva(nome, telefone, email, data, pessoas) VALUES 
-		('{$reserva->nome}', '{$reserva->telefone}', '{$reserva->email}', '{$reserva->data}', '{$reserva->pessoas}')";
+		$login = buscaId($conexao, $login);
+		$sql = "INSERT INTO reserva(nome, telefone, email, data, pessoas, id_usuario) VALUES 
+		('{$reserva->nome}', '{$reserva->telefone}', '{$reserva->email}', '{$reserva->data}', '{$reserva->pessoas}', 
+		'{$login}')";
+	
+		$resultado = mysqli_query($conexao, $sql);
+		return $resultado;
+	}
+	
+	function buscaId($conexao, $login){
+		/*
+		$sql = "SELECT usuario.id FROM usuario INNER JOIN reserva
+				ON reserva.id = usuario.id_reserva WHERE login = '{$login}'";*/
+		//$sql = "SELECT MAX(id) FROM usuario";
+		
+		$sql = "SELECT id FROM usuario WHERE login = '$login'"; //capturar o campo auto_increment de usuario
+				
+		$resultado = mysqli_query($conexao, $sql);
+		
+		$array = mysqli_fetch_assoc($resultado);
+		return $array['id'];
+		
+	}
+	
+	function apagaReserva($conexao, $id){
+		
+		$sql = "DELETE FROM reserva WHERE id_usuario = '$id'";
 		
 		$resultado = mysqli_query($conexao, $sql);
 		return $resultado;
 	}
 	
-	function cancelaReserva($conexao, $id){
+	function listaReserva($conexao){ //Chamado na página listaReserva.php
 		
-		$sql = "DELETE FROM reserva WHERE id = '$id'";
-		
-		$resultado = mysqli_query($conexao, $sql);
-		return $resultado;
-	}
-	
-	function listaReserva($conexao, $reserva){ //Chamado na página listaReserva.php
+		 echo "<center><h1> Dados</h1></center>";
 		
 		$sql = "SELECT * FROM reserva";
-		$resultado = mysqli_query($conexao, $reserva);
-		
-		return $resultado;	
+
+		$resultado = mysqli_query($conexao, $sql);
 		
 		while($array = mysqli_fetch_assoc($resultado)){ ?> <!-- Percorre cada linha da tabela e exibe os valores buscados por meio da variável array -->
-			
-		<h2>Dados: </h2>
+		
+		<head>
+			<link rel="stylesheet" type="text/css" href="style.css">
+		</head>
 		<center>
-			<table>
-				<form action="alteraReserva.php" method="POST">
+		<div>
+			<form action="alteraReserva.php" method="POST">
+				<table>
 					<tr>
-						<td><input type=hidden value=<?php echo $array['id'] ?> name=id> </td> <!-- ID para controle das reservas -->
+						<td><input type=hidden value=<?php echo $array['id_usuario'] ?> name=id> </td> <!-- ID para controle das reservas -->
 					</tr>
 					<tr>
 						<td>Nome: <input type=text value=<?php echo $array['nome'] ?> name=nome> </td> <!-- Novo name para atualizar os dados -->
@@ -71,25 +121,27 @@
 						<td>Pessoas: <input type=number_format value=<?php echo $array['pessoas']?> name=pessoas ></td>
 					</tr>
 					<tr>
-						<td><input type=submit value="Alterar"></td>
-					<tr>
-				</form>
-				<form action="cancelaReserva.php" method="POST">
-					<tr>
-						<td><input type=hidden value=<?php echo $array['id'] ?> name=id> </td>
-						<button> Remover </button> <!-- Ação do form -->
+						<td colspan=2><center><input type=submit value="Alterar"></td></center>
 					</tr>
-				</form>
-			</table>
-		</center>
+			</form>
+			<form action="apagaReserva.php" method="POST">
+				<table>
+					<tr>
+						<td><input type=hidden value=<?php echo $array['id_usuario'] ?> name=id></td>
+						<td><button> Remover </button></td> <!-- Ação do form -->
+					</tr>
+				</table>
+			</form>
+		</div>	
+		</center>	
 			
 		<?php	
 			
-		} //fim do while  ?> <a href="login.php">Adicionar Reservas</a><?php //Dentro do método relacionado
+		} //fim do while  ?> <br/><a href="login.php">Adicionar Reservas</a><?php //Dentro do método relacionado
 	} //fim do método
 
 	function localizaReserva($conexao, $a, $nome){
-		if (($a == "buscar") && ($nome != null )){
+		if (($a == "buscar") && ($nome != null)){
 			
 			$palavra = trim($nome);
 			
@@ -104,7 +156,7 @@
 					echo '<center>';
 					echo '<table id="resultados">';
 					echo '<tr>';	
-					echo '<td>ID:</td>'. '<td>'.$exibe->id.'</td>';
+					echo '<td>ID:</td>'. '<td>'.$exibe->id_usuario.'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>Nome:</td>' .'<td>'.$exibe->nome.'</td>';

@@ -1,5 +1,6 @@
 <?php require "conecta.php" ?>
 <?php require_once "bancoReserva.php" ?> 
+<?php require_once "Reserva.php" ?>
 
 <?php 
   $login = $_POST['login'];
@@ -13,7 +14,11 @@ if ($loginUsuario == 0) //Em caso de não encontrar nenhum dado solicitado
 	}
 	else 
 	{
-		header("Location:index.php?user=$login");
+		$res = buscaPerfil($conexao, $login);
+		$perfil->setPerfil($res);
+		$res = $perfil->getPerfil();
+		
+		header("Location:index.php?user=$login&perfil=$res");
 	}
 	
 ?>

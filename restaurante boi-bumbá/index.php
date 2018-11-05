@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<?php require "Reserva.php"?>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -13,13 +14,7 @@
 				<img src="imagens/favicon.png" style="width:42px;height:42px;border:0;position:relative;top:10px;left:6px"/>
 				Restaurante Boi-Bumbá
 			</h1>
-			<table>
-				<tr>
-					<td><a href="index.php"><button>Sobre</button></a></td>
-					<td><a href="reservas.php"><button>Reservas</button></a></td>
-					<td><a href="cardapio.php"><button>Cardápio</button></a></td>
-				</tr>
-			</table>
+			<?php require_once "menu.php" ?>
 			<hr>
 			<h2 id="title">Nossa história</h2>
 			<p id="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et tellus et tortor hendrerit bibendum. Etiam ut urna lectus. Quisque rutrum erat a tincidunt feugiat. Morbi vitae libero vitae nibh scelerisque eleifend vitae a purus. Curabitur aliquet sapien nec iaculis accumsan. Phasellus pellentesque bibendum lectus et porta. Nam pretium eleifend quam, at convallis orci rutrum in. Morbi vel mi velit. Etiam bibendum magna et porttitor tincidunt. Phasellus tincidunt efficitur ipsum. In malesuada id eros vitae vehicula. Cras id mi sed ex efficitur sagittis. Mauris porttitor magna at nunc semper, non dignissim metus dignissim. </p>

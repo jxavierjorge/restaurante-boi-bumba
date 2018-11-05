@@ -13,16 +13,11 @@
 				<img src="imagens/favicon.png" style="width:42px;height:42px;border:0;position:relative;top:10px;left:6px"/>
 				Restaurante Boi-Bumbá
 			</h1>
-		<table>
-			<tr>
-				<td><a href="index.php"><button>Sobre</button></a></td>
-				<td><a href="reservas.php"><button>Reservas</button></a></td>
-				<td><a href="cardapio.php"><button>Cardápio</button></a></td>
-			</tr>
-		</table>
+		<?php require_once "menu.php" ?>
 		<hr>
+		
 		<h2 id="title">Faça sua reserva</h2>
-		<form action="adicionaReserva.php" method="POST">
+		<?php $login = $_GET['user']; echo '<form action="adicionaReserva.php?user='.$login.'" method="POST">';?>
 			<table>
 			<tr>
 				<td>Nome:</td>
