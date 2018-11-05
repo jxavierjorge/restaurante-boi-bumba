@@ -137,7 +137,7 @@
 			
 		<?php	
 			
-		} //fim do while  ?> <br/><a href="login.php">Adicionar Reservas</a><?php //Dentro do método relacionado
+		} //fim do while  ?> <br/><a href="login.php"><button>Adicionar Reservas</button></a><?php //Dentro do método relacionado
 	} //fim do método
 
 	function localizaReserva($conexao, $a, $nome){

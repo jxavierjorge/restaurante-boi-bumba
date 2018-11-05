@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style.css">
 <table>
 	<tr>
 		<?php //inserir essa tag toda nas próximas páginas que serão chamadas pelos botões
@@ -12,5 +13,11 @@
 			
 		?>
 		
+	</tr>
+	<tr>
+		<?php
+		echo '<td><a href="localizaReserva.php?user='.$login.'&perfil='.$perfil.'"><button>Localizar</button></a></td>';
+		echo '<td><a href="listaReserva.php?user='.$login.'&perfil='.$perfil.'"><button>Listar</button></a></td>';
+		?>
 	</tr>
 </table>
