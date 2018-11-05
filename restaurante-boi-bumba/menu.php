@@ -17,6 +17,7 @@
 	<tr>
 		<?php
 		echo '<td><a href="localizaReserva.php?user='.$login.'&perfil='.$perfil.'"><button>Localizar</button></a></td>';
+		echo '<td><a href="https://github.com/jxavierjorge/restaurante-boi-bumba"><button>GitHub</button></a></td>';
 		echo '<td><a href="listaReserva.php?user='.$login.'&perfil='.$perfil.'"><button>Listar</button></a></td>';
 		?>
 	</tr>
