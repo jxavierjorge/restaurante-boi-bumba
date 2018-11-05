@@ -3,8 +3,6 @@
 <?php require_once("bancoReserva.php") ?>
 
 
-<!DOCTYPE html>
-
 
 <?php
 
@@ -14,8 +12,9 @@
 	$reserva->email=$_POST['email'];
 	$reserva->data=$_POST['data'];
 	$reserva->pessoas=$_POST['pessoas'];
+	$login = $_GET['user'];
 	
-	if (adicionaReserva ($conexao, $reserva)) {
+	if (adicionaReserva ($conexao, $reserva, $_GET['user'])) {
 		echo '<center>';
 		echo '<br>';
 		echo '<link rel="stylesheet" type="text/css" href="style.css">';
@@ -50,7 +49,7 @@
 	echo '</table>';
 	echo '</center>';
 
-
+?>
 
 
 

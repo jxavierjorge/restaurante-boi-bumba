@@ -13,13 +13,7 @@
 				<img src="imagens/favicon.png" style="width:42px;height:42px;border:0;position:relative;top:10px;left:6px"/>
 				Restaurante Boi-Bumbá
 			</h1>
-			<table>
-				<tr>
-					<td><a href="index.php"><button>Sobre</button></a></td>
-					<td><a href="reservas.php"><button>Reservas</button></a></td>
-					<td><a href="cardapio.php"><button>Cardápio</button></a></td>
-				</tr>
-			</table>
+			<?php require_once "menu.php" ?>
 			<hr>
 			<h2 id="title">Cardápio</h2>
 			<p>
