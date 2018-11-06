@@ -3,7 +3,9 @@
 	<?php require_once ("bancoReserva.php") ?>
 	
     <?php
-
-		listaReserva($conexao);
+		
+		$perfil = $_GET['perfil'];
+		$login = $_GET['user'];
+		listaReserva($conexao, $perfil, $login);
 	 
 	 ?>
