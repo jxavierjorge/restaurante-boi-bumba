@@ -141,7 +141,7 @@
 						<td>Pessoas: <input type=number_format value=<?php echo $array['pessoas']?> name=pessoas ></td>
 					</tr>
 					<tr>
-						<td colspan=2><center><input type=submit value="Alterar"></td></center>
+						<td colspan=2><center><button type=submit>Alterar</button></td></center>
 					</tr>
 			</form>
 			<?php echo '<form action="apagaReserva.php?user='.$login.'&perfil='.$perfil.'" method="POST">'?>
@@ -158,7 +158,7 @@
 		<?php	
 			
 		} //fim do while 
-		echo '<br/><a href="reservas.php?user='.$login.'&perfil='.$perfil.'">Adicionar Reservas</a>'; //Dentro do método relacionado
+		echo '<br/><a href="reservas.php?user='.$login.'&perfil='.$perfil.'"><button>Adicionar Reservas</button></a>'; //Dentro do método relacionado
 	} //fim do método
 
 	function localizaReserva($conexao, $a, $nome, $login, $perfil){
