@@ -17,7 +17,8 @@
 		<hr>
 		
 		<h2 id="title">Faça sua reserva</h2>
-		<?php $login = $_GET['user']; echo '<form action="adicionaReserva.php?user='.$login.'" method="POST">';?>
+		<?php $login = $_GET['user']; $perfil = $_GET['perfil'];
+		echo '<form action="adicionaReserva.php?user='.$login.'&perfil='.$perfil.'" method="POST">';?>
 			<table>
 			<tr>
 				<td>Nome:</td>

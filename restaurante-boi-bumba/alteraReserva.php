@@ -7,6 +7,8 @@
 	$email = $_POST['email'];
 	$data = $_POST['data'];
 	$pessoas = $_POST['pessoas'];
+	$login = $_GET['user'];
+	$perfil = $_GET['perfil'];
 	
 	function alteraReserva ($conexao, $nome, $telefone, $email, $data, $pessoas, $id){
 		$sql = "UPDATE reserva SET nome = '{$nome}', telefone = '{$telefone}', email = '{$email}', data = '{$data}', pessoas = '{$pessoas}' 
@@ -32,7 +34,7 @@
 	echo '<link rel="stylesheet" type="text/css" href="style.css">';
 	echo '<table border="2" id="resultados">';
 	echo '<tr>';
-	echo '<td colspan=2>'.'<a href = "listaReserva.php">'.'<button> Voltar </button>'.'</a>'.'</td>';
+	echo '<td colspan=2>'.'<a href = "listaReserva.php?user='.$login.'&perfil='.$perfil.'">'.'<button> Voltar </button>'.'</a>'.'</td>';
 	echo '</tr>';
 	echo '</table>';
 	echo '</center>';

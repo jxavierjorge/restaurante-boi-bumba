@@ -6,6 +6,8 @@
 	$a = $_GET['a'];
 	$nome = $_POST['nome'];
 	
-	localizaReserva($conexao, $a, $nome);
+	$login = $_GET['user'];
+	$perfil = $_GET['perfil'];
+	localizaReserva($conexao, $a, $nome, $login, $perfil);
 
 ?>

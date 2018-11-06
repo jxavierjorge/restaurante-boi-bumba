@@ -8,7 +8,8 @@
   	<center>
 	<fieldset id="pesquisa">
 		<legend> &nbsp Buscar Reserva &nbsp </legend>
-		<form method="POST" action="recebeLocalizaReserva.php?a=buscar">
+		<?php $login = $_GET['user']; $perfil = $_GET['perfil'];
+		echo '<form method="POST" action="recebeLocalizaReserva.php?a=buscar&user='.$login.'&perfil='.$perfil.'">' ?>
 			<label>Nome: </label>
 			<input type="text" name="nome" />
 			<br>

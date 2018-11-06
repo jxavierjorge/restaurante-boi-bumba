@@ -53,13 +53,26 @@
 	
 	function adicionaReserva($conexao, $reserva, $login) {
 		
-		$login = buscaId($conexao, $login);
-		$sql = "INSERT INTO reserva(nome, telefone, email, data, pessoas, id_usuario) VALUES 
-		('{$reserva->nome}', '{$reserva->telefone}', '{$reserva->email}', '{$reserva->data}', '{$reserva->pessoas}', 
-		'{$login}')";
-	
-		$resultado = mysqli_query($conexao, $sql);
-		return $resultado;
+		$sql = "SELECT reserva.id_usuario FROM reserva INNER JOIN usuario
+				ON reserva.id_usuario = usuario.id WHERE login = '{$login}'";
+		
+		$resultado = mysqli_query($conexao, $sql);	
+		$r = mysqli_num_rows($resultado);
+		
+		if($r == 0){
+			$login = buscaId($conexao, $login);
+			$sql = "INSERT INTO reserva(nome, telefone, email, data, pessoas, id_usuario) VALUES 
+			('{$reserva->nome}', '{$reserva->telefone}', '{$reserva->email}', '{$reserva->data}', '{$reserva->pessoas}', 
+			'{$login}')";
+			
+			$resultado = mysqli_query($conexao, $sql);
+			return $resultado;
+		}
+		else{
+			$resultado = FALSE;
+			return $resultado;	
+		}
+
 	}
 	
 	function buscaId($conexao, $login){
@@ -85,11 +98,18 @@
 		return $resultado;
 	}
 	
-	function listaReserva($conexao){ //Chamado na página listaReserva.php
+	function listaReserva($conexao, $perfil, $login){ //Chamado na página listaReserva.php
 		
 		 echo "<center><h1> Dados</h1></center>";
 		
+		//$sql = "SELECT * FROM reserva";
+		
+		if($perfil == 1) //controle de acesso 1=Adm / 2=cliente
 		$sql = "SELECT * FROM reserva";
+		else{
+		$sql = "SELECT * FROM reserva INNER JOIN usuario
+				ON usuario.id = reserva.id_usuario WHERE login = '{$login}'"; 	
+		}
 
 		$resultado = mysqli_query($conexao, $sql);
 		
@@ -100,7 +120,7 @@
 		</head>
 		<center>
 		<div>
-			<form action="alteraReserva.php" method="POST">
+			<?php echo '<form action="alteraReserva.php?user='.$login.'&perfil='.$perfil.'" method="POST">' ?>
 				<table>
 					<tr>
 						<td><input type=hidden value=<?php echo $array['id_usuario'] ?> name=id> </td> <!-- ID para controle das reservas -->
@@ -124,7 +144,7 @@
 						<td colspan=2><center><input type=submit value="Alterar"></td></center>
 					</tr>
 			</form>
-			<form action="apagaReserva.php" method="POST">
+			<?php echo '<form action="apagaReserva.php?user='.$login.'&perfil='.$perfil.'" method="POST">'?>
 				<table>
 					<tr>
 						<td><input type=hidden value=<?php echo $array['id_usuario'] ?> name=id></td>
@@ -137,10 +157,11 @@
 			
 		<?php	
 			
-		} //fim do while  ?> <br/><a href="login.php"><button>Adicionar Reservas</button></a><?php //Dentro do método relacionado
+		} //fim do while 
+		echo '<br/><a href="reservas.php?user='.$login.'&perfil='.$perfil.'">Adicionar Reservas</a>'; //Dentro do método relacionado
 	} //fim do método
 
-	function localizaReserva($conexao, $a, $nome){
+	function localizaReserva($conexao, $a, $nome, $login, $perfil){
 		if (($a == "buscar") && ($nome != null)){
 			
 			$palavra = trim($nome);
@@ -193,10 +214,9 @@
 		}
 		
 		?>
-		<br>	
-		<a href="listaReserva.php"><button>Lista completa de reservas</button></a>
 		<br><br>
-		<a href="localizaReserva.php"><button>Fazer outra pesquisa</button></a>	
+		<?php echo '<a href="localizaReserva.php?user='.$login.'&perfil='.$perfil.'"><button>Fazer outra pesquisa</button></a>';	
+		echo '<td><a href="index.php?user='.$login.'&perfil='.$perfil.'"><button>Home</button></a></td>'; ?>
 		<?php
 		echo '</center>';
 	}

@@ -4,10 +4,11 @@
 
 <?php 
   $id = $_POST['id'];
-   apagaReserva($conexao,$id);
+  $login = $_GET['user'];
+  $perfil = $_GET['perfil'];
   
   if (apagaReserva($conexao,$id)){
-		header("Location:listaReserva.php?removido=true"); 
+		header("Location:listaReserva.php?removido=true&user=$login&perfil=$perfil"); 
   }
    else{
 	    echo " <h1>Não removido</h1>";
