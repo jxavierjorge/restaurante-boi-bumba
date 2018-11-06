@@ -45,7 +45,7 @@
 		echo '</tr>';
 	}
 	else{
-		echo "Erro na reserva, você já tem uma reserva agendada";
+		echo "<p>&nbsp Erro na reserva, você já tem uma reserva agendada</p>";
 		//echo mysqli_error($conexao);
 	}
 ?>
